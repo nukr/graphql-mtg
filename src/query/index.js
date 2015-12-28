@@ -1,7 +1,8 @@
 import rethinkdbdash from 'rethinkdbdash'
 import fetch from 'node-fetch'
+import config from '../../config'
 
-let r = rethinkdbdash({host: '192.168.184.5'})
+let r = rethinkdbdash(config.rethinkdb)
 class User extends Object {}
 
 let user = new User()

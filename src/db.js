@@ -1,8 +1,12 @@
-import rethinkdbdash from 'rethinkdbdash'
 import config from '../config'
+import fetch from 'node-fetch'
 
-let r = rethinkdbdash(config.rethinkdb)
+export async function search (options) {
+  let response = await fetch(`http://192.168.184.5:9200/mtg/cards/_search?q=name:${options.cardName}`, {
+    method: 'get'
+  })
 
-export function search (options) {
-  return r.db('mtg').table('cards').filter({name: options.cardName}).run()
+  let result = await response.json()
+  console.log(result.hits.hits)
+  return result.hits.hits
 }
