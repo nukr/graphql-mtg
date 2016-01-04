@@ -12,5 +12,5 @@ RUN ln -s ../src /opt/app/node_modules/app
 WORKDIR /opt/app
 EXPOSE 12345
 
-RUN chmod 755 ./start.sh
-CMD ["./start.sh"]
+RUN chmod 755 ./bin/start
+CMD ["./bin/start"]

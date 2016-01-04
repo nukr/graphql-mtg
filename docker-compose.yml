@@ -4,15 +4,9 @@ api:
     - rethinkdb
   volumes:
     - "./src:/opt/app/src"
-rethinkdb:
-  image: nukr/mtg-rethinkdb
-  command: rethinkdb -d /data --bind all
-graphiql:
-  image: nukr/mtg-graphiql
-nginx:
-  image: nukr/mtg-nginx
   ports:
-    - "80:80"
-  links:
-    - graphiql
-    - api
+    - "80:12345"
+rethinkdb:
+  image: rethinkdb
+  volumes:
+    - "../data:/data"
