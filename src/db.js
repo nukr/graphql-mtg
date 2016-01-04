@@ -1,4 +1,3 @@
-import config from '../config'
 import fetch from 'node-fetch'
 
 export async function search (options) {

@@ -5,16 +5,8 @@ import {
   GraphQLString,
   GraphQLBoolean,
   GraphQLNonNull,
-  GraphQLObjectType,
+  GraphQLObjectType
 } from 'graphql'
-
-import {
-  globalIdField,
-} from 'graphql-relay'
-
-import {
-  getSetByCode,
-} from '../../query'
 
 let foreignNameType = new GraphQLObjectType({
   name: 'ForeignName',
@@ -68,9 +60,7 @@ let legalityType = new GraphQLObjectType({
 export default refs => new GraphQLObjectType({
   name: 'Card',
   description: 'A card in MTG',
-  interfaces: [refs.nodeInterface],
   fields: () => ({
-    id: globalIdField('Card'),
     code: {
       type: GraphQLString,
       description: 'Foreign key for set'
@@ -248,8 +238,7 @@ export default refs => new GraphQLObjectType({
     },
     set: {
       type: refs.set,
-      description: 'Set information of this card',
-      resolve: (card) => getSetByCode(card.code)
+      description: 'Set information of this card'
     }
   })
 })

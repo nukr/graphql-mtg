@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ -z ${NODE_ENV} ]; then
+    NODE_ENV=development
+fi
+
+if [ ${NODE_ENV} == "development" ]; then
+    pm2 start app.json --no-daemon
+else
+    node ./babel-register.js
+fi

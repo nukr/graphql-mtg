@@ -1,5 +1,2 @@
 export {default as card} from './card'
 export {default as set} from './set'
-export {default as search} from './search'
-export {default as user} from './user'
-export {default as viewer} from './viewer'

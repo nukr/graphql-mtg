@@ -1,0 +1,8 @@
+{
+  "name": "mtg-graphql",
+  "script": "babel-register.js",
+  "watch": ["src"],
+  "watch_options": {
+    "usePolling": true
+  }
+}

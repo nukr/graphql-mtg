@@ -2,7 +2,7 @@ import {
   GraphQLList,
   GraphQLString,
   GraphQLBoolean,
-  GraphQLObjectType,
+  GraphQLObjectType
 } from 'graphql'
 
 export default refs => new GraphQLObjectType({

@@ -1,36 +1,36 @@
-import koa from 'koa'
+import Koa from 'koa'
 import Router from 'koa-router'
-import cors from 'koa-cors'
+// import cors from 'koa-cors'
 import parse from 'co-body'
 import schema from './schema'
 import { graphql } from 'graphql'
 import { log } from './utils'
 import db from './db'
 
-let app = koa()
+let app = new Koa()
 let router = Router()
 
-router.post('/graphql', function * (next) {
-  let body = yield parse.json(this)
+router.post('/graphql', async function (context, next) {
+  let body = await parse.json(this)
   log('Query from relay', body.query)
 
   let rootValue = {
-    locale: this.cookies.get('locale') || 'en',
+    locale: context.cookies.get('locale') || 'en',
     db
   }
 
-  this.body = yield graphql(
+  context.body = await graphql(
     schema,
     body.query,
     rootValue
   )
 })
 
-router.get('/', function * () {
-  this.body = 'gg'
+router.get('/', function (context, next) {
+  context.body = 'gg'
 })
 
-app.use(cors())
+// app.use(cors())
 app.use(router.routes())
 app.use(router.allowedMethods())
 
