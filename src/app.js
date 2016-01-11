@@ -2,9 +2,9 @@ import Koa from 'koa'
 import Router from 'koa-router'
 import parse from 'co-body'
 import graphiql from 'koa-graphiql'
-import schema from './schema'
+import logger from 'koa-logger'
 import { graphql } from 'graphql'
-import { log } from './utils'
+import schema from './schema'
 import db from './db'
 
 let app = new Koa()
@@ -35,6 +35,7 @@ router.get('/graphiql', graphiql(async ctx => ({
   }
 })))
 
+app.use(logger())
 app.use(router.routes())
 app.use(router.allowedMethods())
 
