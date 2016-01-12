@@ -19,6 +19,7 @@
   "dependencies": {
     "co-body": "^4.0.0",
     "dataloader": "^1.0.0",
+    "elasticsearch": "^10.1.2",
     "graphql": "^0.4.7",
     "graphql-relay": "^0.3.2",
     "koa": "^2.0.0-alpha.3",

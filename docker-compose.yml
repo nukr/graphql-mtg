@@ -2,6 +2,7 @@ api:
   build: .
   links:
     - rethinkdb
+    - elasticsearch
   volumes:
     - "./src:/opt/app/src"
   ports:
@@ -10,3 +11,10 @@ rethinkdb:
   image: rethinkdb
   volumes:
     - "../data:/data"
+elasticsearch:
+  image: elasticsearch
+logstash:
+  image: nukr/logstash
+  links:
+    - elasticsearch
+    - rethinkdb

@@ -20,7 +20,8 @@ router.post('/graphql', async function (context, next) {
   context.body = await graphql(
     schema,
     body.query,
-    rootValue
+    rootValue,
+    body.variables ? JSON.parse(body.variables) : {}
   )
 })
 
